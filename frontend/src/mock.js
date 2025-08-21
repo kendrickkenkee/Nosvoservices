@@ -493,27 +493,7 @@ export const mockData = {
   },
 
   beforeAfterGallery: [
-    {
-      id: 1,
-      service: "Complet Prestige",
-      before: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop",
-      after: "https://images.unsplash.com/photo-1592365559101-19adfefdf294?w=400&h=300&fit=crop",
-      description: "SUV familial - Transformation complète intérieur/extérieur"
-    },
-    {
-      id: 2,
-      service: "Intérieur Premium",
-      before: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
-      after: "https://images.unsplash.com/photo-1563720223420-71651ee1b5e1?w=400&h=300&fit=crop",
-      description: "Détachage et rénovation sièges cuir"
-    },
-    {
-      id: 3,
-      service: "Extérieur Premium",
-      before: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&h=300&fit=crop",
-      after: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop",
-      description: "Carrosserie avec décontamination ferreuse"
-    }
+    // Galerie temporairement supprimée
   ],
 
   faq: [
