@@ -27,11 +27,10 @@ import {
 import { mockData } from '../mock';
 
 const Testimonials = () => {
-  const { testimonials, stats, beforeAfterGallery, services } = mockData;
+  const { testimonials, stats, services } = mockData;
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedRating, setSelectedRating] = useState('all');
   const [showReviewForm, setShowReviewForm] = useState(false);
-  const [selectedGalleryImage, setSelectedGalleryImage] = useState(null);
   const [newReview, setNewReview] = useState({
     name: '',
     email: '',
