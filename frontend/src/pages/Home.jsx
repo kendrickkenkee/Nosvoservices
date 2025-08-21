@@ -173,14 +173,19 @@ const Home = () => {
               }[benefit.icon];
 
               return (
-                <Card key={benefit.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50">
+                <Card key={benefit.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 card-3d">
                   <CardContent className="p-8 text-center">
                     <div className="mb-6 flex justify-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-3d hover:shadow-3d-hover">
+                        <AnimatedIcons 
+                          icon={IconComponent} 
+                          variant="premium" 
+                          size="w-8 h-8" 
+                          className="text-white" 
+                        />
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-3d">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
