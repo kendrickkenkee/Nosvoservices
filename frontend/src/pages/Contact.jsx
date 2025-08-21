@@ -51,7 +51,8 @@ const Contact = () => {
       value: company.phone,
       description: "Lun-Sam 8h-18h",
       action: "Appeler maintenant",
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      available: true
     },
     {
       icon: Mail,
@@ -59,23 +60,17 @@ const Contact = () => {
       value: company.email,
       description: "Réponse sous 24h",
       action: "Envoyer un email",
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
+      available: true
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      value: "06 XX XX XX XX",
+      value: company.whatsapp,
       description: "Réponse rapide",
       action: "Ouvrir WhatsApp",
-      color: "from-emerald-500 to-emerald-600"
-    },
-    {
-      icon: MessageSquare,
-      title: "Chat en ligne",
-      value: "Support instantané",
-      description: "9h-17h en semaine",
-      action: "Démarrer le chat",
-      color: "from-purple-500 to-purple-600"
+      color: "from-emerald-500 to-emerald-600",
+      available: true
     }
   ];
 
