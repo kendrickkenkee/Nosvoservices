@@ -424,8 +424,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Image Modal */}
-      <ImageModal />
+      {/* CTA Section */}
     </div>
   );
 };
