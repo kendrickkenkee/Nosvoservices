@@ -5,8 +5,9 @@ export const mockData = {
     name: "NosVoServices",
     tagline: "Service de lavage premium à domicile",
     description: "Votre véhicule mérite le meilleur traitement. Nous venons à vous avec notre service de lavage écologique et premium.",
-    phone: "05 45 XX XX XX",
-    email: "contact@nosvoservices.fr",
+    phone: "06 32 44 61 54",
+    email: "Nosvoservices@gmail.com",
+    whatsapp: "06 32 44 61 54",
     address: "Zone d'intervention : Charente et Angoulême"
   },
   
