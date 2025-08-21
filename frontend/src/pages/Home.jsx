@@ -24,11 +24,43 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50">
-        {/* Animated background elements */}
+        {/* Enhanced Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-green-200/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-yellow-200/25 rounded-full blur-xl animate-pulse delay-500"></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl animate-float-slow"></div>
+          <div className="absolute top-40 right-20 w-32 h-32 bg-green-200/20 rounded-full blur-2xl animate-float-slow delay-1000"></div>
+          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-yellow-200/25 rounded-full blur-xl animate-float-slow delay-500"></div>
+          
+          {/* 3D Floating Water Drops */}
+          {Array.from({ length: 5 }, (_, i) => (
+            <div
+              key={`floating-drop-${i}`}
+              className="absolute animate-float-premium opacity-20"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${10 + (i % 3) * 20}%`,
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${6 + i * 0.5}s`
+              }}
+            >
+              <AnimatedIcons icon={Droplets} variant="3d" size="w-12 h-12" className="text-blue-400" />
+            </div>
+          ))}
+          
+          {/* 3D Floating Sparkles */}
+          {Array.from({ length: 3 }, (_, i) => (
+            <div
+              key={`floating-sparkle-${i}`}
+              className="absolute animate-sparkle opacity-30"
+              style={{
+                right: `${10 + i * 25}%`,
+                top: `${15 + i * 30}%`,
+                animationDelay: `${i * 1.2}s`,
+                animationDuration: `${4 + i * 0.3}s`
+              }}
+            >
+              <AnimatedIcons icon={Sparkles} variant="glow" size="w-10 h-10" className="text-yellow-400" />
+            </div>
+          ))}
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -36,12 +68,12 @@ const Home = () => {
             {/* Left content */}
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
-                <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
+                <Badge className="bg-green-100 text-green-800 hover:bg-green-100 animate-pulse-soft">
                   🌿 Service éco-responsable
                 </Badge>
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight text-3d">
                   Votre voiture
-                  <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> mérite le meilleur</span>
+                  <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent animate-shimmer"> mérite le meilleur</span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
                   {company.description}
@@ -50,46 +82,70 @@ const Home = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link to="/reservation">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg w-full sm:w-auto">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg btn-liquid card-3d">
                     Réserver un lavage
-                    <ChevronRight className="w-5 h-5 ml-2" />
+                    <AnimatedIcons icon={ChevronRight} variant="bounce" size="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <Link to="/services">
-                  <Button variant="outline" size="lg" className="border-2 border-gray-300 hover:border-blue-600 px-8 py-4 text-lg w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="border-2 border-gray-300 hover:border-blue-600 px-8 py-4 text-lg card-3d">
                     Voir nos tarifs
                   </Button>
                 </Link>
               </div>
 
-              {/* Contact info */}
+              {/* Contact info with animated icons */}
               <div className="flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-blue-600" />
+                  <AnimatedIcons icon={Phone} variant="glow" size="w-4 h-4" className="text-blue-600" />
                   {company.phone}
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-green-600" />
+                  <AnimatedIcons icon={MapPin} variant="bounce" size="w-4 h-4" className="text-green-600" />
                   Charente & Angoulême
                 </div>
               </div>
             </div>
 
-            {/* Right content - Car image */}
+            {/* Right content - Car image with enhanced effects */}
             <div className="relative">
-              <div className="relative">
+              <div className="relative card-3d">
                 <img
                   src="https://images.unsplash.com/photo-1592365559101-19adfefdf294?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxjbGVhbiUyMGNhcnxlbnwwfHx8fDE3NTU3OTE2MzN8MA&ixlib=rb-4.1.0&q=85"
                   alt="Voiture premium propre"
-                  className="w-full h-auto rounded-3xl shadow-2xl"
+                  className="w-full h-auto rounded-3xl shadow-3d hover:shadow-3d-hover transition-all duration-500"
                 />
-                {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 animate-bounce">
-                  <Sparkles className="w-8 h-8 text-yellow-500" />
+                {/* Enhanced Floating elements with 3D animations */}
+                <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 card-3d">
+                  <AnimatedIcons icon={Sparkles} variant="premium" size="w-8 h-8" className="text-yellow-500" />
                 </div>
-                <div className="absolute -bottom-4 -left-4 bg-blue-600 rounded-2xl shadow-lg p-4 text-white animate-pulse">
-                  <Droplets className="w-8 h-8" />
+                <div className="absolute -bottom-4 -left-4 bg-blue-600 rounded-2xl shadow-lg p-4 text-white card-3d">
+                  <AnimatedIcons icon={Droplets} variant="3d" size="w-8 h-8" className="text-white" />
                 </div>
+                
+                {/* New 3D floating bubbles around the car */}
+                {Array.from({ length: 6 }, (_, i) => (
+                  <div
+                    key={`car-bubble-${i}`}
+                    className="absolute animate-bubble-slow opacity-20"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 3}s`,
+                      animationDuration: `${8 + Math.random() * 4}s`
+                    }}
+                  >
+                    <div 
+                      className="rounded-full bg-gradient-to-br from-blue-300/60 to-blue-500/60 backdrop-blur-sm border border-white/30 shadow-lg"
+                      style={{
+                        width: `${15 + Math.random() * 25}px`,
+                        height: `${15 + Math.random() * 25}px`
+                      }}
+                    >
+                      <div className="absolute top-1 left-1 w-1 h-1 bg-white/80 rounded-full"></div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
