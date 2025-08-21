@@ -419,7 +419,9 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">Téléphone</h4>
-                        <p className="text-gray-600">{company.phone}</p>
+                        <a href={`tel:${company.phone.replace(/\s/g, '')}`} className="text-blue-600 hover:text-blue-800 transition-colors">
+                          <p className="text-gray-600">{company.phone}</p>
+                        </a>
                         <p className="text-sm text-gray-500 mt-1">Service client réactif</p>
                       </div>
                     </div>
@@ -430,7 +432,9 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                        <p className="text-gray-600">{company.email}</p>
+                        <a href={`mailto:${company.email}`} className="text-blue-600 hover:text-blue-800 transition-colors">
+                          <p className="text-gray-600">{company.email}</p>
+                        </a>
                         <p className="text-sm text-gray-500 mt-1">Réponse sous 24h garantie</p>
                       </div>
                     </div>
