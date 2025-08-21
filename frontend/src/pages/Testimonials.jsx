@@ -80,47 +80,6 @@ const Testimonials = () => {
     ));
   };
 
-  const ImageModal = () => {
-    if (!selectedGalleryImage) return null;
-
-    return (
-      <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-          <div className="p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">{selectedGalleryImage.service}</h3>
-              <button
-                onClick={() => setSelectedGalleryImage(null)}
-                className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
-              >
-                ×
-              </button>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-2 text-red-600">Avant</h4>
-                <img
-                  src={selectedGalleryImage.before}
-                  alt="Avant"
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2 text-green-600">Après</h4>
-                <img
-                  src={selectedGalleryImage.after}
-                  alt="Après"
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-              </div>
-            </div>
-            <p className="mt-4 text-gray-600 text-center">{selectedGalleryImage.description}</p>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
