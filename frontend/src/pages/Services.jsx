@@ -12,34 +12,139 @@ import {
   Sparkles,
   Droplets,
   Car,
-  Paintbrush
+  Plus,
+  Building,
+  Repeat,
+  Star,
+  TrendingUp
 } from 'lucide-react';
 import { mockData } from '../mock';
 
 const Services = () => {
-  const { services } = mockData;
-  const [activeTab, setActiveTab] = useState('all');
+  const { services, serviceCategories } = mockData;
+  const [activeCategory, setActiveCategory] = useState('interior');
+  const [selectedService, setSelectedService] = useState(null);
 
-  const serviceCategories = {
-    all: 'Tous les services',
-    basic: 'Services de base',
-    premium: 'Services premium'
+  const getCategoryIcon = (iconName) => {
+    const icons = {
+      Car,
+      Droplets,
+      Sparkles,
+      Plus,
+      Building,
+      Repeat
+    };
+    return icons[iconName] || Car;
   };
 
-  const getServiceIcon = (serviceName) => {
-    if (serviceName.includes('Intérieur')) return Car;
-    if (serviceName.includes('Extérieur')) return Droplets;
-    if (serviceName.includes('Complet')) return Sparkles;
-    if (serviceName.includes('Esthétique')) return Paintbrush;
-    return Car;
+  const currentCategory = serviceCategories.find(cat => cat.id === activeCategory);
+  const filteredServices = services.filter(service => service.category === activeCategory);
+
+  const handleServiceSelect = (service) => {
+    setSelectedService(service);
   };
 
-  const filteredServices = services.filter(service => {
-    if (activeTab === 'all') return true;
-    if (activeTab === 'basic') return service.id <= 2;
-    if (activeTab === 'premium') return service.id > 2;
-    return true;
-  });
+  const ServiceDetailModal = () => {
+    if (!selectedService) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="p-8">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <Badge className="bg-blue-100 text-blue-800 mb-3">
+                  {currentCategory?.name}
+                </Badge>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  {selectedService.name}
+                </h2>
+                <p className="text-gray-600">{selectedService.shortDescription}</p>
+              </div>
+              <button
+                onClick={() => setSelectedService(null)}
+                className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Price and Duration */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-2xl">
+                <div className="flex items-center space-x-3 mb-3">
+                  <Clock className="w-5 h-5 text-blue-600" />
+                  <span className="font-semibold text-gray-900">Durée</span>
+                </div>
+                <div className="text-2xl font-bold text-blue-600">
+                  {selectedService.duration}
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-green-50 to-yellow-50 p-6 rounded-2xl">
+                <div className="flex items-center space-x-3 mb-3">
+                  <Euro className="w-5 h-5 text-green-600" />
+                  <span className="font-semibold text-gray-900">Tarif</span>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-lg text-gray-600">
+                    Min: <span className="font-bold text-green-600">{selectedService.priceMin}</span>
+                  </div>
+                  <div className="text-lg text-gray-600">
+                    Reco: <span className="font-bold text-green-600">{selectedService.priceReco}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Description détaillée</h3>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                {selectedService.description}
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Inclus dans ce service</h3>
+              <div className="space-y-3">
+                {selectedService.features.map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-gray-700 text-lg">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                to="/reservation" 
+                state={{ selectedService: selectedService.name }}
+                className="flex-1"
+              >
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-4">
+                  Réserver ce service
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Button 
+                variant="outline" 
+                className="border-2 border-gray-300 hover:border-blue-600 text-lg py-4"
+                onClick={() => setSelectedService(null)}
+              >
+                Retour aux services
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -55,14 +160,54 @@ const Services = () => {
               <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Lavage Premium</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Découvrez nos formules adaptées à tous vos besoins, du lavage express à la préparation esthétique complète
+              Découvrez nos formules adaptées à tous vos besoins, du lavage express aux abonnements sur-mesure
             </p>
-            <Link to="/reservation">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-                Réserver maintenant
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/reservation">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
+                  Réserver maintenant
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Link to="/process">
+                <Button variant="outline" size="lg" className="border-2 border-gray-300 hover:border-blue-600 px-8 py-4">
+                  Comment ça marche ?
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Categories Navigation */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {serviceCategories.map((category) => {
+              const IconComponent = getCategoryIcon(category.icon);
+              const isActive = activeCategory === category.id;
+              
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`p-4 rounded-2xl text-center transition-all duration-300 ${
+                    isActive 
+                      ? 'bg-blue-600 text-white shadow-lg scale-105' 
+                      : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 ${
+                    isActive 
+                      ? 'bg-white/20' 
+                      : `bg-gradient-to-br ${category.color}`
+                  }`}>
+                    <IconComponent className={`w-6 h-6 ${isActive ? 'text-white' : 'text-white'}`} />
+                  </div>
+                  <div className="font-semibold text-sm">{category.name}</div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -70,77 +215,102 @@ const Services = () => {
       {/* Services Section */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          {/* Service Categories */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-            <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-12">
-              <TabsTrigger value="all">Tous</TabsTrigger>
-              <TabsTrigger value="basic">De base</TabsTrigger>
-              <TabsTrigger value="premium">Premium</TabsTrigger>
-            </TabsList>
+          {/* Category Header */}
+          <div className="text-center mb-12">
+            <div className={`w-20 h-20 bg-gradient-to-br ${currentCategory?.color} rounded-3xl flex items-center justify-center mx-auto mb-6`}>
+              {React.createElement(getCategoryIcon(currentCategory?.icon), {
+                className: "w-10 h-10 text-white"
+              })}
+            </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {currentCategory?.name}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {currentCategory?.description}
+            </p>
+          </div>
 
-            <TabsContent value={activeTab} className="mt-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                {filteredServices.map((service) => {
-                  const IconComponent = getServiceIcon(service.name);
-                  
-                  return (
-                    <Card key={service.id} className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
-                      <CardContent className="p-8">
-                        {/* Header */}
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="flex items-center space-x-4">
-                            <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                              <IconComponent className="w-7 h-7 text-white" />
-                            </div>
-                            <div>
-                              <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                                {service.name}
-                              </h3>
-                              <div className="flex items-center space-x-3">
-                                <Badge className="bg-yellow-100 text-yellow-800">
-                                  <Clock className="w-3 h-3 mr-1" />
-                                  {service.duration}
-                                </Badge>
-                                <div className="text-3xl font-bold text-blue-600">
-                                  {service.price}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+          {/* Services Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredServices.map((service) => (
+              <Card 
+                key={service.id} 
+                className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-white to-gray-50 overflow-hidden cursor-pointer"
+                onClick={() => handleServiceSelect(service)}
+              >
+                <CardContent className="p-6 relative">
+                  {/* Popular badge */}
+                  {service.popular && (
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300">
+                        <Star className="w-3 h-3 mr-1" />
+                        Populaire
+                      </Badge>
+                    </div>
+                  )}
 
-                        {/* Description */}
-                        <p className="text-gray-600 mb-6 text-lg">
-                          {service.description}
-                        </p>
+                  {/* Header */}
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      {service.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      {service.shortDescription}
+                    </p>
+                  </div>
 
-                        {/* Features */}
-                        <div className="space-y-3 mb-8">
-                          <h4 className="font-semibold text-gray-900 text-lg">Inclus dans ce service :</h4>
-                          {service.features.map((feature, index) => (
-                            <div key={index} className="flex items-center space-x-3">
-                              <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <Check className="w-3 h-3 text-white" />
-                              </div>
-                              <span className="text-gray-700">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
+                  {/* Duration and Price */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-4 h-4 text-blue-600" />
+                      <span className="text-sm text-gray-600">{service.duration}</span>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm text-gray-500">À partir de</div>
+                      <div className="text-lg font-bold text-blue-600">{service.priceMin}</div>
+                    </div>
+                  </div>
 
-                        {/* Action Button */}
-                        <Link to="/reservation" state={{ selectedService: service.name }}>
-                          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group-hover:bg-blue-700 text-lg py-3">
-                            Choisir ce service
-                            <ChevronRight className="w-5 h-5 ml-2" />
-                          </Button>
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          </Tabs>
+                  {/* Price comparison */}
+                  <div className="mb-6">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs text-gray-500">Prix minimum</span>
+                      <span className="text-xs text-gray-500">Prix recommandé</span>
+                    </div>
+                    <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="absolute left-0 top-0 h-full w-1/2 bg-blue-500 rounded-full"></div>
+                      <div className="absolute right-0 top-0 h-full w-1/2 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="flex justify-between items-center mt-1">
+                      <span className="text-sm font-semibold text-blue-600">{service.priceMin}</span>
+                      <span className="text-sm font-semibold text-green-600">{service.priceReco}</span>
+                    </div>
+                  </div>
+
+                  {/* Quick features preview */}
+                  <div className="space-y-2 mb-6">
+                    {service.features.slice(0, 3).map((feature, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
+                        <span className="text-sm text-gray-600 truncate">{feature}</span>
+                      </div>
+                    ))}
+                    {service.features.length > 3 && (
+                      <div className="text-sm text-blue-600 font-medium">
+                        +{service.features.length - 3} autres inclusions...
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Action */}
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group-hover:bg-blue-700 transition-all">
+                    Voir les détails
+                    <ChevronRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -158,19 +328,19 @@ const Services = () => {
                   Tarification Participative
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Nos prix "à partir de" couvrent nos charges opérationnelles. Cependant, nous croyons en la valeur réelle de notre service premium.
+                  Nos prix "minimum" couvrent nos charges opérationnelles. Cependant, nous croyons en la valeur réelle de notre service premium et encourageons le "prix recommandé".
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
                     <span className="text-gray-700">Prix minimum = Couverture des coûts</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-green-500 rounded-full"></div>
                     <span className="text-gray-700">Prix recommandé = Valeur réelle du service</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <TrendingUp className="w-4 h-4 text-yellow-500" />
                     <span className="text-gray-700">Vous choisissez selon votre satisfaction</span>
                   </div>
                 </div>
@@ -182,13 +352,19 @@ const Services = () => {
                     <span className="text-sm text-gray-600">Prix minimum</span>
                     <span className="text-sm text-gray-600">Prix recommandé</span>
                   </div>
-                  <div className="relative h-4 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="absolute left-0 top-0 h-full w-1/3 bg-blue-500 rounded-full"></div>
-                    <div className="absolute right-0 top-0 h-full w-1/3 bg-green-500 rounded-full"></div>
+                  <div className="relative h-6 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"></div>
+                    <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
                   </div>
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-lg font-bold text-blue-600">Charges</span>
-                    <span className="text-lg font-bold text-green-600">Valeur</span>
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-blue-600">Charges</div>
+                      <div className="text-sm text-gray-500">Couvertes</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-green-600">Valeur</div>
+                      <div className="text-sm text-gray-500">Reconnue</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -223,6 +399,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Service Detail Modal */}
+      <ServiceDetailModal />
     </div>
   );
 };
