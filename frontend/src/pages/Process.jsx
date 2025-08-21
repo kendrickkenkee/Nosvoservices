@@ -227,6 +227,141 @@ const Process = () => {
         </div>
       </section>
 
+      {/* Paiement Participatif Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <Badge className="bg-purple-100 text-purple-800 mb-6">
+              Notre Philosophie
+            </Badge>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Le Paiement Participatif
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Une approche transparente et équitable qui vous laisse le choix du prix selon votre satisfaction
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left: Explanation */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    Comment ça fonctionne ?
+                  </h3>
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    Après chaque prestation, vous choisissez le montant que vous souhaitez payer entre 
+                    le <strong>prix minimum</strong> et le <strong>prix recommandé</strong>.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Euro className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-blue-900 mb-2">Prix Minimum</h4>
+                      <p className="text-gray-700">
+                        Couvre nos charges opérationnelles : déplacement, produits, main-d'œuvre de base.
+                        C'est le seuil pour maintenir notre service.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="w-6 h-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-green-900 mb-2">Prix Recommandé</h4>
+                      <p className="text-gray-700">
+                        Valorise notre expertise, la qualité premium, l'innovation écologique et 
+                        nous permet d'investir dans de meilleurs équipements.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Scale className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-purple-900 mb-2">Votre Choix</h4>
+                      <p className="text-gray-700">
+                        En fonction de votre satisfaction, de la qualité du résultat et de votre appréciation 
+                        du service, vous déterminez le juste prix.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Visual Representation */}
+              <div className="space-y-8">
+                <div className="bg-white p-8 rounded-3xl shadow-lg">
+                  <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">
+                    Exemple : Lavage Complet Essentiel
+                  </h4>
+                  
+                  {/* Price Scale */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between text-sm text-gray-600 mb-2">
+                      <span>Prix minimum</span>
+                      <span>Prix recommandé</span>
+                    </div>
+                    
+                    <div className="relative h-8 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">59€</span>
+                      </div>
+                      <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-sm">89€</span>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4 mt-6">
+                      <div className="text-center p-4 bg-blue-50 rounded-2xl">
+                        <div className="text-2xl font-bold text-blue-600 mb-2">59€</div>
+                        <div className="text-sm text-blue-800">Charges couvertes</div>
+                      </div>
+                      <div className="text-center p-4 bg-green-50 rounded-2xl">
+                        <div className="text-2xl font-bold text-green-600 mb-2">89€</div>
+                        <div className="text-sm text-green-800">Valeur reconnue</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefits of fair pricing */}
+                <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-2xl">
+                  <h4 className="font-bold text-gray-900 mb-4">Pourquoi ce modèle ?</h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-gray-700">Transparence totale sur nos coûts</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-gray-700">Récompense la qualité de service</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-gray-700">Encourage l'amélioration continue</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-gray-700">Respecte votre budget et satisfaction</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Technical Specifications */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-6">
