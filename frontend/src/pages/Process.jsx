@@ -209,6 +209,12 @@ const Process = () => {
                                 <div className="w-32 h-32 border-4 border-blue-200 rounded-full animate-ping opacity-20"></div>
                               </div>
                             )}
+
+                            {step.id === 5 && (
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-32 h-32 border-4 border-green-200 rounded-full animate-pulse opacity-30"></div>
+                              </div>
+                            )}
                           </div>
                         </CardContent>
                       </Card>
