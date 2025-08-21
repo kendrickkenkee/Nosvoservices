@@ -152,6 +152,40 @@ const Process = () => {
                           </div>
                         </div>
                       )}
+
+                      {step.id === 3 && (
+                        <div className="space-y-3">
+                          <div className="flex items-center space-x-3">
+                            <Droplets className="w-5 h-5 text-blue-500" />
+                            <span className="text-gray-700">Techniques professionnelles</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                            <Recycle className="w-5 h-5 text-green-500" />
+                            <span className="text-gray-700">Recyclage de l'eau</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                            <Leaf className="w-5 h-5 text-emerald-500" />
+                            <span className="text-gray-700">Produits biodégradables</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {step.id === 5 && (
+                        <div className="space-y-3">
+                          <div className="flex items-center space-x-3">
+                            <Euro className="w-5 h-5 text-blue-500" />
+                            <span className="text-gray-700">Prix minimum = Couverture des charges</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                            <TrendingUp className="w-5 h-5 text-green-500" />
+                            <span className="text-gray-700">Prix recommandé = Valeur réelle</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                            <Scale className="w-5 h-5 text-purple-500" />
+                            <span className="text-gray-700">Vous décidez selon votre satisfaction</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Visual */}
