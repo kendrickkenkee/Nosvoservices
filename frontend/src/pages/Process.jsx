@@ -67,7 +67,7 @@ const Process = () => {
               <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> marche ?</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Un processus simple et transparent en 4 étapes pour un résultat parfait
+              Un processus simple et transparent en 5 étapes pour un résultat parfait
             </p>
             <Link to="/reservation">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
