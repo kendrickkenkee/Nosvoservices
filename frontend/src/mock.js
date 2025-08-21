@@ -385,24 +385,134 @@ export const mockData = {
       name: "Marie L.",
       location: "Angoulême",
       rating: 5,
-      comment: "Service impeccable ! Ma voiture n'avait jamais été aussi propre. L'équipe est très professionnelle.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      service: "Complet Confort",
+      date: "2024-01-15",
+      comment: "Service impeccable ! Ma voiture n'avait jamais été aussi propre. L'équipe est très professionnelle et respectueuse. Le système de tarification participative est très fair-play.",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 23
     },
     {
       id: 2,
       name: "Thomas D.",
       location: "Charente",
       rating: 5,
-      comment: "Très pratique, ils viennent à domicile. Résultat parfait et respect de l'environnement.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+      service: "Extérieur Premium",
+      date: "2024-01-20",
+      comment: "Très pratique, ils viennent à domicile. Résultat parfait et respect de l'environnement. J'ai été surpris par la qualité du lavage écologique. Je recommande vivement !",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 18
     },
     {
       id: 3,
       name: "Sophie M.",
       location: "La Couronne",
       rating: 5,
-      comment: "Prix transparents et service de qualité. Je recommande vivement pour leur professionnalisme.",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      service: "Intérieur Premium",
+      date: "2024-01-25",
+      comment: "Prix transparents et service de qualité. Je recommande vivement pour leur professionnalisme. Le détachage des sièges a été parfait, on dirait une voiture neuve !",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 31
+    },
+    {
+      id: 4,
+      name: "Pierre G.",
+      location: "Ruelle-sur-Touvre",
+      rating: 5,
+      service: "Complet Prestige",
+      date: "2024-02-01",
+      comment: "Excellent service ! La prestation Prestige vaut vraiment le coup. Ma BMW n'a jamais été aussi brillante. L'équipe est ponctuelle et très soigneuse. Prix recommandé payé sans hésiter.",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 15
+    },
+    {
+      id: 5,
+      name: "Isabelle R.",
+      location: "Soyaux",
+      rating: 4,
+      service: "Intérieur Confort",
+      date: "2024-02-05",
+      comment: "Très satisfaite du service. L'aspirateur professionnel fait vraiment la différence. Petit bémol sur l'horaire (15 min de retard) mais la qualité était au rendez-vous.",
+      avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 9
+    },
+    {
+      id: 6,
+      name: "David L.",
+      location: "Angoulême",
+      rating: 5,
+      service: "Forfait Flotte",
+      date: "2024-02-10",
+      comment: "Service entreprise parfait pour notre flotte de 10 véhicules. Intervention sur site très pratique, rapport qualité-prix imbattable. L'équipe s'adapte parfaitement à nos contraintes.",
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 12
+    },
+    {
+      id: 7,
+      name: "Céline P.",
+      location: "Champniers",
+      rating: 5,
+      service: "Complet Essentiel",
+      date: "2024-02-12",
+      comment: "Super expérience ! Service à domicile très appréciable avec des enfants en bas âge. Résultat impeccable et tarif très correct. Je prends un abonnement sans hésiter.",
+      avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 7
+    },
+    {
+      id: 8,
+      name: "Julien M.",
+      location: "Gond-Pontouvre",
+      rating: 5,
+      service: "Brillance & Protection",
+      date: "2024-02-15",
+      comment: "Le traitement céramique est vraiment efficace ! 3 semaines après, l'eau perle encore parfaitement. Service professionnel et prix juste. Très content de cette découverte.",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      verified: true,
+      helpfulCount: 19
+    }
+  ],
+
+  stats: {
+    totalClients: 847,
+    averageRating: 4.9,
+    satisfactionRate: 98,
+    completedServices: 1243,
+    ratingDistribution: {
+      5: 89,
+      4: 9,
+      3: 1,
+      2: 1,
+      1: 0
+    }
+  },
+
+  beforeAfterGallery: [
+    {
+      id: 1,
+      service: "Complet Prestige",
+      before: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop",
+      after: "https://images.unsplash.com/photo-1592365559101-19adfefdf294?w=400&h=300&fit=crop",
+      description: "SUV familial - Transformation complète intérieur/extérieur"
+    },
+    {
+      id: 2,
+      service: "Intérieur Premium",
+      before: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
+      after: "https://images.unsplash.com/photo-1563720223420-71651ee1b5e1?w=400&h=300&fit=crop",
+      description: "Détachage et rénovation sièges cuir"
+    },
+    {
+      id: 3,
+      service: "Extérieur Premium",
+      before: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&h=300&fit=crop",
+      after: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&h=300&fit=crop",
+      description: "Carrosserie avec décontamination ferreuse"
     }
   ],
 
