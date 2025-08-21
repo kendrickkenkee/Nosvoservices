@@ -187,10 +187,12 @@ const Contact = () => {
               pour vous accompagner dans tous vos besoins de lavage automobile premium.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-                <Phone className="w-5 h-5 mr-2" />
-                Appeler maintenant
-              </Button>
+              <a href={`tel:${company.phone.replace(/\s/g, '')}`}>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Appeler maintenant
+                </Button>
+              </a>
               <Link to="/reservation">
                 <Button variant="outline" className="border-2 border-gray-300 hover:border-blue-600 px-8 py-4">
                   Réserver en ligne
