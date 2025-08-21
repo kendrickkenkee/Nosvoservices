@@ -237,9 +237,27 @@ const Contact = () => {
                     <p className="text-gray-600 text-sm mb-4">
                       {method.description}
                     </p>
-                    <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
-                      {method.action}
-                    </Button>
+                    {method.title === 'Téléphone' && (
+                      <a href={`tel:${method.value.replace(/\s/g, '')}`}>
+                        <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
+                          {method.action}
+                        </Button>
+                      </a>
+                    )}
+                    {method.title === 'Email' && (
+                      <a href={`mailto:${method.value}`}>
+                        <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
+                          {method.action}
+                        </Button>
+                      </a>
+                    )}
+                    {method.title === 'WhatsApp' && (
+                      <a href={`https://wa.me/33${method.value.replace(/\s/g, '').substring(1)}`} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
+                          {method.action}
+                        </Button>
+                      </a>
+                    )}
                   </CardContent>
                 </Card>
               );
