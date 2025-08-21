@@ -55,6 +55,12 @@ export const mockData = {
       title: "Finition",
       description: "Séchage et finition premium pour un résultat parfait",
       icon: "Sparkles"
+    },
+    {
+      id: 5,
+      title: "Paiement Participatif",
+      description: "Vous choisissez le prix selon votre satisfaction",
+      icon: "CreditCard"
     }
   ],
 
