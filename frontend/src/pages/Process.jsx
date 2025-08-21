@@ -88,7 +88,8 @@ const Process = () => {
                 Calendar,
                 Truck,
                 Droplets,
-                Sparkles
+                Sparkles,
+                CreditCard
               }[step.icon];
 
               const isEven = index % 2 === 0;
