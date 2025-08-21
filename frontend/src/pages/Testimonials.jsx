@@ -20,9 +20,7 @@ import {
   Filter,
   Calendar,
   MapPin,
-  Image as ImageIcon,
-  Send,
-  StarIcon
+  Send
 } from 'lucide-react';
 import { mockData } from '../mock';
 
