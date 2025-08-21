@@ -327,66 +327,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Before/After Gallery */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Galerie Avant/Après
-            </h2>
-            <p className="text-xl text-gray-600">
-              Découvrez la transformation de nos prestations
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {beforeAfterGallery.map((item) => (
-              <Card 
-                key={item.id} 
-                className="group cursor-pointer hover:shadow-xl transition-all duration-300 border-0 overflow-hidden"
-                onClick={() => setSelectedGalleryImage(item)}
-              >
-                <div className="relative">
-                  <div className="grid grid-cols-2 h-48">
-                    <div className="relative">
-                      <img
-                        src={item.before}
-                        alt="Avant"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold">
-                        Avant
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <img
-                        src={item.after}
-                        alt="Après"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
-                        Après
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                    <div className="text-white text-center">
-                      <ImageIcon className="w-8 h-8 mx-auto mb-2" />
-                      <div className="text-sm font-semibold">Voir en grand</div>
-                    </div>
-                  </div>
-                </div>
-                <CardContent className="p-4">
-                  <Badge className="bg-purple-100 text-purple-800 mb-2">
-                    {item.service}
-                  </Badge>
-                  <p className="text-sm text-gray-600">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Review Form Modal */}
       {showReviewForm && (
