@@ -1,34 +1,186 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom styles for NosVoServices */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.App-link {
-    color: #61dafb;
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.animate-shimmer {
+  background: linear-gradient(45deg, #3A9BDC 25%, transparent 25%, transparent 75%, #3A9BDC 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
 }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3A9BDC, #1E5E3A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom button hover effects */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+/* Premium card effects */
+.card-premium {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(58, 155, 220, 0.1), rgba(30, 94, 58, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Water droplet animation */
+@keyframes droplet {
+  0% { transform: translateY(-20px) scale(0); opacity: 0; }
+  50% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(20px) scale(0); opacity: 0; }
+}
+
+.droplet {
+  animation: droplet 2s ease-in-out infinite;
+}
+
+/* Premium color palette CSS variables */
+:root {
+  --color-primary: #3A9BDC;
+  --color-secondary: #1E5E3A;
+  --color-accent: #9A7650;
+  --color-neutral-light: #E5E5E5;
+  --color-text-dark: #0A0A0A;
+  --color-white: #FFFFFF;
+}
+
+/* Override default focus styles with brand colors */
+.focus\:ring-primary:focus {
+  --tw-ring-color: var(--color-primary);
+}
+
+.focus\:border-primary:focus {
+  border-color: var(--color-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Loading animation for images */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Premium hover effects for service cards */
+.service-card {
+  transform: perspective(1000px) rotateX(0deg);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+}
+
+/* Testimonial card styling */
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::after {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 60px;
+  color: var(--color-primary);
+  opacity: 0.3;
+  font-family: serif;
+}
+
+/* Brand consistency */
+.brand-blue { color: var(--color-primary); }
+.brand-green { color: var(--color-secondary); }
+.brand-gold { color: var(--color-accent); }
+
+.bg-brand-blue { background-color: var(--color-primary); }
+.bg-brand-green { background-color: var(--color-secondary); }
+.bg-brand-gold { background-color: var(--color-accent); }
