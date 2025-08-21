@@ -15,7 +15,11 @@ import {
   CheckCircle,
   Recycle,
   Volume2,
-  Leaf
+  Leaf,
+  CreditCard,
+  Euro,
+  TrendingUp,
+  Scale
 } from 'lucide-react';
 import { mockData } from '../mock';
 
