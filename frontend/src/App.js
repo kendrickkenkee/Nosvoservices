@@ -10,6 +10,7 @@ import Process from "./pages/Process";
 import Reservation from "./pages/Reservation";
 import Testimonials from "./pages/Testimonials";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={
               <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
