@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Process from "./pages/Process";
+import Reservation from "./pages/Reservation";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/process" element={<Process />} />
+            <Route path="/reservation" element={<Reservation />} />
             <Route path="*" element={
               <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
