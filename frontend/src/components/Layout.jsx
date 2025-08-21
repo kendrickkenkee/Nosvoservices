@@ -39,8 +39,12 @@ const Layout = ({ children }) => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
-                <Droplets className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_sparkle-auto-design/artifacts/rvblyzgz_ChatGPT%20Image%2020%20ao%C3%BBt%202025%2C%2022_32_04-Photoroom.svg" 
+                  alt="NosVoServices Logo" 
+                  className="w-10 h-10 transition-transform duration-300 hover:scale-110"
+                />
               </div>
               <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
             </Link>
